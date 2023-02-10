@@ -5,7 +5,7 @@ var currentCount = 0;
 function applyTapCountHTML() {
   console.log('applyTapCountHTML...', currentCount);
   var button = document.getElementById('countButton');
-  console.log('button...', `${button}`);
+  console.log('button...', button.innerHTML);
   button.innerHTML = currentCount;
 };
 

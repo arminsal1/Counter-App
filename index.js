@@ -3,15 +3,18 @@ var minCount = 20;
 var currentCount = 0;
 
 function applyTapCountHTML() {
-  var button = document.getElementById('countButton');
+  console.log('applyTapCountHTML...', currentCount);
+  var button = $(document).getElementById('countButton');
+  console.log('button...', `${button}`);
   button.innerHTML = currentCount;
 };
 
-function addCount(event) {
+function addCount() {
   currentCount += 1;
   applyTapCountHTML();
 };
 
-window.onload = function() {
+$(document).ready(function() {
+  console.log('ready');
   applyTapCountHTML();
-};
+});

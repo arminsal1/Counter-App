@@ -14,7 +14,7 @@ function addCount() {
   applyTapCountHTML();
 };
 
-document.ready(function() {
-  console.log('ready');
+document.addEventListener('DOMContentLoaded', (event) => {
+  console.log('DOM fully loaded and parsed');
   applyTapCountHTML();
 });

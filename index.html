@@ -7,5 +7,44 @@
 <body>
   <button style="button" id="countButton" onclick="addCount()">0</button>
   <p name="bodyText" >Auto</p>
+  <div class="flex-container">
+    <button style="button">Play</button>
+    <button style="button">Reset</button>
+  </div>
+  <div class="title-container">
+    <p name="bodyText" >BPM</p>
+    <switch/>
+  </div>
+  <div class="flex-container">
+    <input
+      style="input"
+      type="number"
+      onkeydown="return onlyNumberKey(event)"
+      placeholder="Min BPM"
+    />
+    <input
+      style="input"
+      type="number"
+      onkeydown="return onlyNumberKey(event)"
+      placeholder="Max BPM"
+    />
+  </div>
+  <p name="bodyText" >Total Range</p>
+  <div class="flex-container">
+    <input
+      style="input"
+      type="number"
+      onkeydown="return onlyNumberKey(event)"
+      placeholder="Min Total"
+      value="20"
+    />
+    <input
+      style="input"
+      type="number"
+      onkeydown="return onlyNumberKey(event)"
+      placeholder="Max Total"
+      value="100"
+    />
+  </div>
 </body>
 </html>

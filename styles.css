@@ -7,6 +7,7 @@ p[name="bodyText"] {
   margin: 4px 2px;
   font-family: 'calibri';
   font-size: 16pt;
+  background-color: transparent;
 }
 button {
   border: none;
@@ -19,4 +20,13 @@ button {
   margin: 4px 2px;
   cursor: pointer;
   width: 100%;
+}
+.flex-container {
+  display: flex;
+  background-color: transparent;
+}
+.title-container {
+  display: flex;
+  background-color: transparent;
+  justify-content: space-between;
 }

@@ -1,23 +1,96 @@
-var currentCount = 0;
-var startCount = minCount;
+var count = {
+  start: 0,
+  current: 0,
+  minTotal: 20,
+  maxTotal: 100,
+  minBPM: 60,
+  maxBPM: 80,
+};
 
-var maxCount = 100;
-var minCount = 20;
+// Selectable options for joining logical rules
+var logicOpts = ['AND', 'OR'];
+// Selectable options for variables
+var varOpts = []
 
-var playing = false;
+// [String]: User-typed (freeform) logical/numerical rules for audio playback on next count.current value
+var audioRules = [];
 
-function applyTapCountHTML() {
-  var button = document.getElementById('countButton');
-  button.innerHTML = currentCount;
+var audioLogic = [true];
+
+var autoCounting = false;
+
+function updateHTML(manualInput) {
+  // Update Current Count
+  var countButton = document.getElementById('countButton');
+  countButton.innerHTML = count.current;
+  // Update Total Params
+  var maxTotalInput = document.getElementById('maxTotalInput');
+  var minTotalInput = document.getElementById('minTotalInput');
+  if (manualInput) {
+    count.maxTotal = Number(maxTotalInput.value);
+    count.minTotal = Number(minTotalInput.value);
+  } else {
+    maxTotalInput.value = count.maxTotal;
+    minTotalInput.value = count.minTotal;
+  }
+  // Update BPM Params
+  var maxBPMInput = document.getElementById('maxBPMInput');
+  var minBPMInput = document.getElementById('minBPMInput');
+  if (manualInput) {
+    count.maxBPM = Number(maxBPMInput.value);
+    count.minBPM = Number(minBPMInput.value);
+  } else {
+    maxBPMInput.value = count.maxBPM;
+    minBPMInput.value = count.minBPM;
+  }
+  // Update Play Button
+  var playButton = document.getElementById('playButton');
+  playButton.innerHTML = autoCounting ? 'Pause' : 'Play';
 };
 
 function addCount() {
-  currentCount += 1;
-  applyTapCountHTML();
+  count.current += 1;
+  updateHTML();
 };
 
+function resetCount() {
+  count.current = count.start;
+  updateHTML();
+}
+
+function startAutoCount() {
+  // TODO
+  console.log(count);
+}
+
+function stopAutoCount() {
+  // TODO
+}
+
+function autoCount() {
+  autoCounting = !autoCounting;
+  if (autoCounting) {
+    startAutoCount();
+  } else {
+    stopAutoCount();
+  }
+  updateHTML();
+}
+
 function onlyNumberKey(evt) {
-  return (/^-?\d+$/.test(evt.key) || evt.which == 8) ? true : false;
+  // RegExp Numbers
+  if (/^-?\d+$/.test(evt.key)) {
+    return true;
+  }
+  // Allow Backspace
+  if (evt.which == 8) {
+    return true;
+  }
+  // Decimal Check
+  if (evt.which == 190 && !isNaN(`${evt.originalTarget.value}${evt.key}`)) {
+    return true;
+  }
+  return false;
 }
 
 const audioCtx = new AudioContext();
@@ -117,5 +190,5 @@ function scheduler() {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  applyTapCountHTML();
+  applyCountToHTML();
 });

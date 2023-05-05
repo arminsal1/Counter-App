@@ -1,32 +1,54 @@
 body {
-  background-color: #000000;
+  background-color: #222;
+  color: #eee;
+  font-family: sans-serif;
+  margin: 0;
+  display: flex;
   flex-direction: column;
+  height: 100vh;
 }
-p[name="bodyText"] {
-  color: white;
-  margin: 4px 2px;
-  font-family: 'calibri';
-  font-size: 16pt;
-  background-color: transparent;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
-button {
+
+.count-button {
+  background-color: #FFC107;
+  color: #222;
   border: none;
-  color: black;
-  padding: 50px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
+  font-size: 2rem;
+  flex-grow: 1;
   cursor: pointer;
-  width: 100%;
 }
-.flex-container {
-  display: flex;
-  background-color: transparent;
+
+.control-panel {
+  overflow-y: auto;
+  padding: 1rem;
 }
-.title-container {
+
+.reset-section,
+.play-pause-section,
+.limit-section {
   display: flex;
-  background-color: transparent;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reset-button,
+.play-pause-button {
+  background-color: #FFC107;
+  color: #222;
+  border: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+.lower-limit,
+.upper-limit {
+  width: 50%;
+  margin-top: 0.5rem;
 }
